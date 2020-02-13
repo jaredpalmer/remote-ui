@@ -4,7 +4,8 @@
   "private": true,
   "repository": "https://github.com/lemonmade/remote-ui.git",
   "workspaces": [
-    "./packages/*"
+    "./packages/*",
+    "./example"
   ],
   "scripts": {
     "postinstall": "lerna bootstrap",

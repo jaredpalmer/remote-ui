@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "react-scripts start"
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build"
   },
   "dependencies": {
-    "@remote-ui/core": "^0.0.10",
-    "@remote-ui/react": "^0.0.12",
-    "@remote-ui/rpc": "^0.0.2",
-    "@remote-ui/web-workers": "^0.0.2",
-    "@shopify/react-web-worker": "^1.2.6",
+    "@remote-ui/core": "*",
+    "@remote-ui/react": "*",
+    "@remote-ui/rpc": "*",
+    "@remote-ui/web-workers": "*",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-scripts": "3.3.1"
@@ -18,8 +18,7 @@
   "devDependencies": {
     "@types/react": "^16.9.19",
     "@types/react-dom": "^16.9.5",
-    "patch-package": "^6.2.0",
-    "typescript": "^3.7.5"
+    "react-app-rewired": "^2.1.5"
   },
   "browserslist": {
     "production": [

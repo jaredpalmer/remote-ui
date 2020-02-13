@@ -6,6 +6,7 @@
     {"path": "./packages/core"},
     {"path": "./packages/react"},
     {"path": "./packages/rpc"},
-    {"path": "./packages/web-workers"}
+    {"path": "./packages/web-workers"},
+    {"path": "./example"}
   ]
 }

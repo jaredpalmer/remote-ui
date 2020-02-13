@@ -2,32 +2,23 @@ import {
   retain,
   createRemoteRoot,
   RemoteRoot,
-  RemoteReceiver,
+  RemoteChannel,
 } from '@remote-ui/core';
-import { Card, Button } from './components';
+import {Card, Button} from './components/worker';
 
 type RenderCallback = (root: RemoteRoot) => void;
 
 let renderCallback: RenderCallback | undefined;
 
-// `self` is a reference to the global object here
-/** eslint:disable */
-(window.self as any).onRender = (callback: RenderCallback) => {
+(globalThis as any).onRender = (callback: RenderCallback) => {
   renderCallback = callback;
 };
 
-export function run(script: string, receiver: RemoteReceiver) {
-  retain(receiver);
+export function run(script: string, channel: RemoteChannel) {
+  retain(channel);
 
-  // @ts-ignore
-  const s = document.createElement('script');
-  s.src = script;
-  document.body.appendChild(s);
+  importScripts(script);
 
-  if (renderCallback != null) {
-    const remoteRoot = (createRemoteRoot as any)({
-      components: [Card, Button],
-    });
-    renderCallback(remoteRoot);
-  }
+  const root = createRemoteRoot(channel, {components: [Card, Button]});
+  renderCallback?.(root);
 }
